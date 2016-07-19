@@ -11,6 +11,12 @@ var users = require('./routes/users');
 
 var app = express();
 
+var osipaddress = process.env.OPENSHIFT_NODEJS_IP;
+var osport = process.env.OPENSHIFT_NODEJS_PORT;
+
+app.set('port', osport || 3000);
+app.set('ipaddress',osipaddress);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
